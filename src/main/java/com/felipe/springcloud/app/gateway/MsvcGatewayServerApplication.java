@@ -1,4 +1,4 @@
-package com.felipe.springcloud.app.gateway.msvc_gateway_server;
+package com.felipe.springcloud.app.gateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
