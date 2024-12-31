@@ -36,7 +36,7 @@ public class SampleGlobalFilter implements GlobalFilter, Ordered {
                 exchange.getResponse().getHeaders().add("token", value);
             });
             exchange.getResponse().getCookies().add("color", ResponseCookie.from("color", "yellow").build());
-            exchange.getResponse().getHeaders().setContentType(MediaType.TEXT_PLAIN);
+            // exchange.getResponse().getHeaders().setContentType(MediaType.TEXT_PLAIN);
         }));
     }
 
