@@ -34,7 +34,12 @@ spring:
             # - Cookie=color, blue
             # - Header=Content-Type, application/json
           filters:
-            - CircuitBreaker=products
+            # - CircuitBreaker=products
+            - name: CircuitBreaker
+              args:
+                name: products
+                statusCodes: 500, 404
+                fallbackUri: forward:/api/items/1
             - StripPrefix=2
             - name: SampleCookie
               args:
