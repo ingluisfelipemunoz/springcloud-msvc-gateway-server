@@ -1,3 +1,25 @@
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        sliding-window-size: 6
+        failure-rate-threshold: 50
+        wait-duration-in-open-state: 20s
+        permitted-number-of-calls-in-half-open-state: 4
+        slow-call-duration-threshold: 3s
+        slow-call-rate-threshold: 50
+    instances:
+      products:
+        base-config: default
+  timelimiter:
+    configs:
+      default:
+        timeout-duration: 4s
+    instances:
+      products:
+        base-config: default
+# YAML configuration has higher preference than the programmatic configuration
+
 spring:
   cloud:
     gateway:
@@ -12,6 +34,7 @@ spring:
             # - Cookie=color, blue
             # - Header=Content-Type, application/json
           filters:
+            - CircuitBreaker=products
             - StripPrefix=2
             - name: SampleCookie
               args:
