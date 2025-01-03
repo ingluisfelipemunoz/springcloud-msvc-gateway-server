@@ -38,7 +38,8 @@ spring:
             - name: CircuitBreaker
               args:
                 name: products
-                statusCodes: 500, 404
+                # statusCodes: 500, 404
+                statusCodes: 500
                 fallbackUri: forward:/api/items/1
             - StripPrefix=2
             - name: SampleCookie
