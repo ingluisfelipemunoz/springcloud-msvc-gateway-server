@@ -23,7 +23,7 @@ public class SecurityConfig {
         }).cors(csrf -> csrf.disable())
                 .oauth2Login(withDefaults())
                 .oauth2Client(withDefaults())
-                .oauth2ResourceServer(withDefaults())
+                .oauth2ResourceServer(oauth2 -> oauth2.jwt(withDefaults()))
                 .build();
 
     }
