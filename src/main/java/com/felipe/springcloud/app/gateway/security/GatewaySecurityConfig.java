@@ -8,7 +8,7 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
 import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
-public class SecurityConfig {
+public class GatewaySecurityConfig {
     @Bean
     SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) throws Exception {
         return http.authorizeExchange(auth -> {
