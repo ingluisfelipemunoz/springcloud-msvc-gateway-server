@@ -24,15 +24,18 @@ public class GatewaySecurityConfig {
     @Bean
     SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) throws Exception {
         return http.authorizeExchange(auth -> {
-            auth.pathMatchers("/authorized", "/logout")
+            auth.pathMatchers("/authorized", "/logout", "/api/users/reset-password")
                     .permitAll()
                     .pathMatchers(HttpMethod.GET, "/api/items", "/api/products", "/api/users")
                     .permitAll()
+                    .pathMatchers(HttpMethod.POST, "/api/users")
+                    .permitAll()
                     .pathMatchers(HttpMethod.GET, "/api/items/{id}", "/api/products/{id}", "/api/users/{id}")
-                    .hasAnyRole("ADMIN", "USER")
+                    .hasAnyRole("ADMIN")
                     .pathMatchers("/api/items/**", "/api/products/**", "/api/users/**").hasRole("ADMIN")
                     .anyExchange().authenticated();
         }).cors(csrf -> csrf.disable())
+                .csrf(csrf -> csrf.disable())
                 .oauth2Login(withDefaults())
                 .oauth2Client(withDefaults())
                 .oauth2ResourceServer(oauth2 -> oauth2

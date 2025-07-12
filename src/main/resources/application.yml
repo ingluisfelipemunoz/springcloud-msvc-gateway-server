@@ -28,7 +28,7 @@ spring:
           issuer-uri: http://localhost:9100
       client:
         registration:
-          client-app:
+          gateway-app:
             provider: spring
             client-id: gateway-app
             client-secret: 123456
@@ -37,7 +37,7 @@ spring:
             scope:
               - openid
               - profile
-            client-name: client-app
+            client-name: gateway-app
         provider:
           spring:
             issuer-uri: http://localhost:9100
